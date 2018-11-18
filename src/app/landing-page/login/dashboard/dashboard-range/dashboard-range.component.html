@@ -1,0 +1,141 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#2962ff" type="ball-scale"></ngx-spinner>
+<div class="row" id="no-margin-bottom">
+  <div class="col l5 s12 m4">
+    <nav class="transparent z-depth-0">
+      <div class="nav-wrapper">
+        <div class="col s12 l12 left">
+          <a class="breadcrumb black-text" translate>Dashboard</a>
+          <a class="breadcrumb black-text" translate>Range Statistics</a>
+        </div>
+      </div>
+    </nav>
+    <p id="overview" class="left" translate>{{ 'dateMin' |
+      translate }} {{ dateOfDayMin | date }} {{ 'dateMax' |
+      translate }} {{ dateOfDayMax| date }}</p>
+  </div>
+  <div class="col l7 s12 m8">
+    <div class="flex-wrapper">
+      <mz-datepicker-container class="date-float mr-10">
+        <input mz-datepicker label="{{ 'dateMinInput' |
+        translate }}" [options]="options" [(ngModel)]="dateOfDayMinNg"
+          type="text">
+      </mz-datepicker-container>
+      <mz-datepicker-container class="date-float">
+        <input mz-datepicker label="{{ 'dateMaxInput' |
+        translate }}" [options]="options" [(ngModel)]="dateOfDayMaxNg"
+          type="text">
+      </mz-datepicker-container>
+      <button type="submit" class="waves-effect waves-light btn blue z-depth-2 button-date-float" (click)="changeDate(dateOfDayMinNg, dateOfDayMaxNg)"
+        translate>Send</button>
+    </div>
+  </div>
+</div>
+<div class="row clearfix">
+  <div class="col l3 s12 m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>Usage by date range</span>
+        <h5>{{ kwValue | number }} kW/h</h5>
+        <h6 class="mt-25">{{ co2Emmision | number }} kg CO
+          <sub>2</sub> {{ "emmit" | translate }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l3 s12 m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>High tariff usage</span>
+        <h5>{{ highSpentCharge | number }} kW/h</h5>
+        <h6 translate>{{ 'Low tariff usage' | translate }} {{ lowSpentCharge | number }} kW/h</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l3 s12  m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>Total spending</span>
+        <h5>{{ spentCurrency | number }} {{currencyPrefix}}</h5>
+        <h6 class="mt-25">{{ lowSpentPercentage }} {{ 'lte' | translate }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l3 s12  m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>High Tariff</span>
+        <h5>{{ highSpent | number }} {{currencyPrefix}}</h5>
+        <h6 class="mt-25">{{ 'ltc' | translate }} {{ lowSpent | number }} {{currencyPrefix}}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+<h6 class="section-heading" translate>Usage by departments</h6>
+<a class="btn-flat saveButton" (click)="saveDepartments()" translate>Save</a>
+<div class="row">
+  <div class="col l4 m6 s12">
+    <div *ngIf="chartFloor">
+      <canvas id="canvasFloor" height="280">{{ chartFloor }}</canvas>
+    </div>
+  </div>
+  <div class="col l4 s12 m6">
+    <div class="card z-depth-2 mt-80">
+      <div class="card-content">
+        <span class="card-title" translate>Percentage usage</span>
+        <h5>{{ firstFloor }}% {{ "1st" | translate }}</h5>
+        <h6 class="mt-25">{{ Office }}% {{ "office" | translate }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l4 s12 m6">
+    <div class="card z-depth-2 mt-80">
+      <div class="card-content">
+        <span class="card-title" translate>2nd Floor usage</span>
+        <h5>{{ secondFloor }}%</h5>
+        <h6>{{ basement }}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col l12 m12 s12">
+    <h6 class="section-heading" translate>Spending by months for years</h6>
+    <a class="btn-flat saveButton" (click)="saveChart()" translate>Save</a>
+    <div class="row">
+      <div *ngIf="chart">
+        <canvas id="canvas" height="120">{{ chart }}</canvas>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col l4 s12">
+    <div id="last-row-card">
+      <div class="col l12 m6 s12">
+        <div class="card z-depth-2">
+          <div class="card-content">
+            <span class="card-title" translate>Maximum spent kW/h</span>
+            <h5>{{ maxMonthValue | number }} kW/h - {{ maxMonth | date : 'MMMM, yyyy' }}</h5>
+            <h6 class="mt-25">{{ 'mskwh' | translate }} {{ minMonthValue | number }} kW/h - {{ minMonth | date : 'MMMM,
+              yyyy' }}</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col l12 m6 s12">
+        <div class="card z-depth-2">
+          <div class="card-content">
+            <span class="card-title" translate>Total kW/h till now</span>
+            <h5>{{ totalTillNow | number }} kW/h </h5>
+            <h6 class="mt-25" translate>{{ co2EmmisionHour | number }} kg CO<sub>2</sub> {{ "emmis" | translate }}</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col l8 s12">
+    <h6 class="section-heading" translate>Total spending by years</h6>
+    <a class="btn-flat saveButton" (click)="saveTotalYear()" translate>Save</a>
+    <div *ngIf="chartBar">
+      <canvas id="canvasBar" height="160">{{ chartBar }}</canvas>
+    </div>
+  </div>
+</div>

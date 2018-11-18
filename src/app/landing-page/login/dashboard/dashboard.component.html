@@ -1,0 +1,73 @@
+<mz-sidenav [backgroundClass]="'grey lighten-5 z-depth-4'" [width]="'275'" [fixed]="'true'" [id]="'sidenav-dashboard'"
+  [collapseButtonId]="'btn-sidenav-dashboard'">
+  <mz-sidenav-header>
+    <div class="header-wrapper">
+      <img src="../../assets/logo.png" alt="logo" height="40" width="60">
+      <h6 class="center grey-text text-darken-1 header-text" *ngIf="companyObj">{{ companyObj.Company_Name }}</h6>
+    </div>
+  </mz-sidenav-header>
+  <mz-sidenav-subheader>
+    <p class="grey-text text-darken-1 subheader-text" *ngIf="companyObj">{{ companyObj.Company_Location }}</p>
+  </mz-sidenav-subheader>
+  <mz-sidenav-divider></mz-sidenav-divider>
+  <mz-sidenav-link>
+    <a class="info-text" translate>Categories</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a class="waves-effect sidenav-thin-font" [routerLink]="'/dashboard/overview'" routerLinkActive="blue white-text z-depth-1"
+      id="1">
+      <i class="material-icons white-text left" id="2">dashboard</i> {{ 'Overview' | translate }}</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a class="waves-effect sidenav-thin-font" [routerLink]="'/dashboard/advanced'" routerLinkActive="blue white-text z-depth-1"
+      id="3">
+      <i class="material-icons grey-text text-darken-1 left" id="4">date_range</i>{{ 'Range Statistics' |
+      translate }}</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a class="waves-effect sidenav-thin-font" id="5" [routerLink]="'/dashboard/savings'" routerLinkActive="blue white-text z-depth-1">
+      <i class="material-icons grey-text text-darken-1 left" id="6">multiline_chart</i>{{ 'Savings' | translate }}</a>
+  </mz-sidenav-link>
+  <mz-sidenav-divider></mz-sidenav-divider>
+  <mz-sidenav-link> 
+    <a class="info-text" translate>Version</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a class="text-grey text-lighten-2 version-text">v 1.0 - alpha</a>
+  </mz-sidenav-link>
+</mz-sidenav>
+<div class="z-depth-1 top-navbar">
+  <a class="waves-effect btn transparent btn-large z-depth-0 black-text left" id="btn-sidenav-dashboard">
+    <i class="material-icons left">menu</i>
+  </a>
+  <a class="waves-effect btn transparent btn-large z-depth-0 right logout" (click)="goBack()">
+    <i class="material-icons left grey-text text-darken-3">exit_to_app</i>{{ 'LOGOUT' | translate }}
+  </a>
+</div>
+<div class="clearfix" id="dashboard-wrapper">
+  <div id="main-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<button id="setting-button" mz-button [float]="true" [large]="true" class="grey darken-2" (click)="featureDiscovery.open()">
+  <i class="material-icons">settings</i>
+</button>
+<mz-feature-discovery [targetId]="'setting-button'" #featureDiscovery>
+  <div id="feature-discovery">
+    <h5 translate>Language</h5>
+    <mz-switch-container class="white-text">
+      <input mz-switch id="switch-id" [off]="'English'" [on]="'Српски'" type="checkbox" (click)="switchLanguage()">
+    </mz-switch-container>
+    <h5 translate>Currency</h5>
+    <mz-radio-button-container>
+      <input mz-radio-button [label]="'рсд'" [withGap]="true" id="rsd" name="radio-group" type="radio" (click)="setCurrency('rsd')">
+    </mz-radio-button-container>
+    <mz-radio-button-container>
+      <input mz-radio-button [label]="'euro'" [withGap]="true" id="euro" name="radio-group" type="radio" (click)="setCurrency('euro')">
+    </mz-radio-button-container>
+    <mz-radio-button-container>
+      <input mz-radio-button [label]="'us dollar'" [withGap]="true" id="us dollar" name="radio-group" type="radio"
+        (click)="setCurrency('us dollar')">
+    </mz-radio-button-container>
+  </div>
+</mz-feature-discovery>

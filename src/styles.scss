@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~material-design-icons/iconfont/material-icons.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// hide horizontal scroll - animation "Pulse energy" text bug
+html {
+  overflow-x: hidden;
+}
+
+// reset materialize default input color
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus {
+  border-bottom: 1px solid #30A7D1;
+  box-shadow: 0 1px 0 0 #30A7D1;
+}
+
+// reset materialize default label color
+input[type=text]:focus+label,
+input[type=email]:focus+label,
+input[type=password]:focus+label {
+  color: #30A7D1;
+}
+
+// reset materialize default textarea color
+.input-field textarea:focus {
+  border-bottom-color: #30A7D1;
+  box-shadow: 0 1px 0 0 #30A7D1;
+}
+
+// reset materialize default textarea label color
+.input-field textarea:focus+label {
+  color: #30A7D1;
+}
+
+// default placeholder color
+::-webkit-input-placeholder {
+  color: white;
+}
+
+::-moz-placeholder {
+  color: #FFF;
+  opacity: 1;
+}
+
+:-moz-placeholder {
+  color: #FFF;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: #FFF;
+  background-color: #CCC;
+}
+
+// default breadcrumb arrow color
+.breadcrumb:before {
+  color: black;
+}
+

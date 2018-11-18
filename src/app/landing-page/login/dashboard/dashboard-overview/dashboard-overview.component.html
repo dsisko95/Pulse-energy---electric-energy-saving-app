@@ -1,0 +1,166 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#2962ff" type="ball-scale"></ngx-spinner>
+<div class="row" id="no-margin-bottom">
+  <div class="col l6 s12 m4">
+    <nav class="transparent z-depth-0">
+      <div class="nav-wrapper">
+        <div class="col s12 l12 left">
+          <a class="breadcrumb black-text" translate>Dashboard</a>
+          <a class="breadcrumb black-text">{{ 'ov' | translate }}</a>
+        </div>
+      </div>
+    </nav>
+    <p id="overview" class="left" translate>{{ 'OVF' |
+      translate }} {{ date | date }}</p>
+  </div>
+  <div class="col l6 s12 m8 right">
+    <button type="submit" id="date-btn" class="waves-effect waves-light btn blue z-depth-2 button-date-float right" (click)="changeDate(dateOfDay)"
+      translate>Send</button>
+    <mz-datepicker-container class="date-float">
+      <input mz-datepicker label="{{ 'Select date' |
+      translate }}" [options]="options" [(ngModel)]="dateOfDay" id="datepicker"
+        placeholder="Select date" type="text">
+    </mz-datepicker-container>
+  </div>
+</div>
+<div class="row clearfix">
+  <div class="col l3 s12 m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>Today's usage</span>
+        <h5>{{ kwValue | number }} kW/h</h5>
+        <h6 class="mt-25">{{ percentageUsage }}{{ dateReverse | date }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l3 s12 m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>High tariff usage</span>
+        <h5>{{ highSpentCharge | number }} kW/h</h5>
+        <h6 translate>{{ 'Low tariff usage' | translate }} {{ lowSpentCharge | number }} kW/h</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l3 s12  m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>Total spending</span>
+        <h5>{{ spentCurrency | number }} {{ currencyPrefix }}</h5>
+        <h6 class="mt-25">{{ lowSpentPercentage }} {{ 'lte' | translate }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l3 s12  m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>High Tariff</span>
+        <h5>{{ highSpent | number }} {{ currencyPrefix }}</h5>
+        <h6 class="mt-25">{{ 'ltc' | translate }} {{ lowSpent | number }} {{ currencyPrefix }}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col l4 s12 m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>Average value per kW/h</span>
+        <h5>{{ valuePerCurrency }}</h5>
+        <h6 class="mt-25" translate>* including up to 1% margin error</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l4 s12 m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>Average usage per hour</span>
+        <h5>{{ spendingPerHour }} kW/h</h5>
+        <h6 class="mt-25" translate>{{ co2EmmisionHour }} kg CO<sub>2</sub> {{ "emmi" | translate }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l4 s12  m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>CO
+          <sub>2</sub> {{ "emmit" | translate }}</span>
+        <h5>{{ co2Emmision | number }} kg</h5>
+        <h6 class="mt-25" [innerHTML]="'co2info' | translate"></h6>
+      </div>
+    </div>
+  </div>
+</div>
+<h6 class="section-heading" translate>Total spending by hour</h6>
+<a class="btn-flat saveButton" (click)="saveChart()" translate>Save</a>
+<div class="row">
+  <div *ngIf="chart">
+    <canvas id="canvas" height="120">{{ chart }}</canvas>
+  </div>
+</div>
+<h6 class="section-heading" translate>Usage by departments</h6>
+<a class="btn-flat saveButton" (click)="saveDepartments()" translate>Save</a>
+<div class="row">
+  <div class="col l4 m6 s12">
+    <div *ngIf="chartFloor">
+      <canvas id="canvasFloor" height="280">{{ chartFloor }}</canvas>
+    </div>
+  </div>
+  <div class="col l4 s12 m6">
+    <div class="card z-depth-2 mt-80">
+      <div class="card-content">
+        <span class="card-title" translate>Percentage usage</span>
+        <h5>{{ firstFloor }}% {{ "1st" | translate }}</h5>
+        <h6 class="mt-25">{{ Office }}% {{ "office" | translate }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l4 s12 m6">
+    <div class="card z-depth-2 mt-80">
+      <div class="card-content">
+        <span class="card-title" translate>2nd Floor usage</span>
+        <h5>{{ secondFloor }}%</h5>
+        <h6>{{ basement }}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+<h6 class="section-heading" translate>Max device spending by hour</h6>
+<a class="btn-flat saveButton" (click)="saveMaxDevice()" translate>Save</a>
+<div class="row">
+  <div class="col l12 s12">
+    <div *ngIf="chartArea">
+      <canvas id="canvasArea" height="120">{{ chartArea }}</canvas>
+    </div>
+  </div>
+  <div class="col l4  m6 s12" id="max-device">
+    <ul class="collection with-header">
+      <li class="collection-header">
+        <h6 translate>Max Device spending by hour before noon</h6>
+      </li>
+      <li class="collection-item" *ngFor="let device of maxSpentDevicesBeforeNoon">
+        <div>{{ device.Hour }}:00 AM<a class="secondary-content black-text">{{ 'DeviceList.' + device.DeviceName |
+            translate }} - {{ device.Total / 1000 }} kW/h</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="col l4 m6 s12" id="min-device">
+    <ul class="collection with-header">
+      <li class="collection-header">
+        <h6 translate>Max Device spending by hour afternoon</h6>
+      </li>
+      <li class="collection-item" *ngFor="let device of maxSpentDevicesAfterNoon">
+        <div>{{ device.Hour }}:00 PM<a class="secondary-content black-text">{{ 'DeviceList.' + device.DeviceName |
+            translate }} - {{ device.Total / 1000 }} kW/h</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="col l4 s12 m6">
+    <div class="card z-depth-2" id="max-device-card">
+      <div class="card-content">
+        <span class="card-title" translate>Max spent by</span>
+        <h5>{{ 'DeviceList.' + maxSpentDevice | translate }} {{ maxTotal }} kW/h</h5>
+        <h6 class="mt-25">{{ "min" | translate }} {{ 'DeviceList.' + minSpentDevice | translate }} {{ minTotal }} kW/h</h6>
+      </div>
+    </div>
+  </div>
+</div>

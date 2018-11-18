@@ -1,0 +1,301 @@
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" color="#2962ff" type="ball-scale"></ngx-spinner>
+<div class="row" id="no-margin-bottom">
+  <div class="col l5 s12 m4">
+    <nav class="transparent z-depth-0">
+      <div class="nav-wrapper">
+        <div class="col s12 l12 left">
+          <a class="breadcrumb black-text" translate>Dashboard</a>
+          <a class="breadcrumb black-text" translate>Savings</a>
+        </div>
+      </div>
+    </nav>
+    <p id="overview" class="left" translate>{{ 'OVF' |
+      translate }} {{ date | date : 'MMM d, y - hh:mm a' }}</p>
+  </div>
+</div>
+<div class="row clearfix">
+  <div class="col l3 s12 m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>Usage by latest hour</span>
+        <h5>{{ total | number }} kW/h</h5>
+        <h6 class="mt-25">{{ 'spm' | translate }} - {{ totalNumber | number }} {{ currencyPrefix }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l3 s12 m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>Spent this week</span>
+        <h5>{{ totalWeek | number }} kW/h</h5>
+        <h6 class="mt-25">{{ 'spm' | translate }} - {{ totalWeekNumber | number }} {{ currencyPrefix }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l3 s12  m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>This month</span>
+        <h5>{{ totalMonth | number }} kW/h</h5>
+        <h6 class="mt-25">{{ 'spm' | translate }} - {{ totalMonthNumber | number }} {{ currencyPrefix }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l3 s12  m6">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>Last month</span>
+        <h5>{{ totalLastMonth | number }} kW/h</h5>
+        <h6 class="mt-25">{{ 'spm' | translate }} - {{ totalLastMonthNumber | number }} {{ currencyPrefix }}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+<h6 class="section-heading" translate>Add devices</h6>
+<div class="row">
+  <table class="highlight centered responsive-table">
+    <thead>
+      <tr>
+        <th translate>Name</th>
+        <th translate>Quantity</th>
+        <th translate>Unit spending</th>
+        <th translate>Floor</th>
+        <th translate>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <mz-select-container>
+            <select mz-select label="{{ 'Name' |
+                translate }}" #selectName>
+              <option *ngFor="let device of devicesArray" [value]="device">{{ device }}</option>
+            </select>
+          </mz-select-container>
+        </td>
+        <td>
+          <mz-input-container><input mz-input label="{{ 'Quantity' |
+            translate }}" type="text" #Quantity></mz-input-container>
+        </td>
+        <td>
+          <mz-input-container><input mz-input label="{{ 'Unit spending' |
+            translate }}" type="text"
+              #Spending></mz-input-container>
+        </td>
+        <td>
+          <mz-select-container>
+            <select mz-select label="{{ 'Floor' |
+            translate }}" #selectFloor>
+              <option *ngFor="let floor of floorsArray" [value]="floor">{{ floor }}</option>
+            </select>
+          </mz-select-container>
+        </td>
+        <td>
+          <button type="submit" id="date-btn" class="waves-effect waves-light btn blue z-depth-2 button-date-float"
+            (click)="addDevice(selectName.value, Quantity.value, Spending.value, selectFloor.value)" translate>Add</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h6 class="section-heading" translate>Forecast</h6>
+<div class="row">
+  <div class="col l4 s12">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>Forecast for next hour</span>
+        <h5> {{ totalForecast | number }} kW/h</h5>
+        <h6 class="mt-25" translate>{{ 'fnw' | translate }} {{ totalForecastWeek | number }} kW/h</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l4 s12">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>Forecast for June</span>
+        <h5>{{ totalForecastMonth | number }} kW/h</h5>
+        <h6 class="mt-25">{{ percentageUsage }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="col l4 s12">
+    <div class="card z-depth-2">
+      <div class="card-content">
+        <span class="card-title" translate>Saved till now kwh</span>
+        <h5>{{ totallySavedTillNow | number }} kW/h</h5>
+        <h6 class="mt-25">{{ 'Totally saved' | translate }} {{ savedMoney | number }} {{ currencyPrefix }}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+<h6 class="section-heading left" translate>Devices configuration</h6>
+<div class="row clearfix">
+  <div class="col l4 s12">
+    <h6 translate>1st Floor devices usage</h6>
+    <table class="highlight centered responsive-table">
+      <thead>
+        <tr>
+          <th translate>Name</th>
+          <th translate>Quantity</th>
+          <th translate>Unit spending</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let floor of firstFloor">
+          <td>{{ 'DeviceList.' + floor.DeviceName |
+            translate }}</td>
+          <td>
+            <mz-select-container>
+              <select mz-select label="{{ 'lvl' |
+            translate }}" (change)="firstFloorCalc(floor, floor.Quantity)"
+                [(ngModel)]="floor.Quantity">
+                <option *ngFor="let item of quantityArray" [ngValue]="item">{{
+                  item }}</option>
+              </select>
+            </mz-select-container>
+          </td>
+          <td>{{ floor.Spent }} W</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col l4 s12">
+    <h6 translate>2nd Floor devices usage</h6>
+    <table class="highlight centered responsive-table">
+      <thead>
+        <tr>
+          <th translate>Name</th>
+          <th translate>Quantity</th>
+          <th translate>Unit spending</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let floor of secondFloor">
+          <td>{{ 'DeviceList.' + floor.DeviceName |
+            translate }}</td>
+          <td>
+            <mz-select-container>
+              <select mz-select label="{{ 'lvl' |
+                translate }}" (change)="secondFloorCalc(floor, floor.Quantity)"
+                [(ngModel)]="floor.Quantity">
+                <option *ngFor="let item of quantityArray" [ngValue]="item">{{
+                  item }}</option>
+              </select>
+            </mz-select-container>
+          </td>
+          <td>{{ floor.Spent }} W</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col l4 s12">
+    <h6 translate>Office devices usage</h6>
+    <table class="highlight centered responsive-table">
+      <thead>
+        <tr>
+          <th translate>Name</th>
+          <th translate>Quantity</th>
+          <th translate>Unit spending</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let floor of office">
+          <td>{{ 'DeviceList.' + floor.DeviceName |
+            translate }}</td>
+          <td>
+            <mz-select-container>
+              <select mz-select label="{{ 'lvl' |
+                translate }}" (change)="officeFloorCalc(floor, floor.Quantity)"
+                [(ngModel)]="floor.Quantity">
+                <option *ngFor="let item of quantityArray" [ngValue]="item">{{
+                  item }}</option>
+              </select>
+            </mz-select-container>
+          </td>
+          <td>{{ floor.Spent }} W</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col l4 s12">
+    <h6 translate>Basement devices usage</h6>
+    <div *ngIf="basementCheck; else no_basement">
+      <table class="highlight centered responsive-table">
+        <thead>
+          <tr>
+            <th translate>Name</th>
+            <th translate>Quantity</th>
+            <th translate>Unit spending</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let floor of basement">
+            <td>{{ 'DeviceList.' + floor.DeviceName |
+              translate }}</td>
+            <td>
+              <mz-select-container>
+                <select mz-select label="{{ 'lvl' |
+                 translate }}" (change)="basementFloorCalc(floor, floor.Quantity)"
+                  [(ngModel)]="floor.Quantity">
+                  <option *ngFor="let item of quantityArray" [ngValue]="item">{{
+                    item }}</option>
+                </select>
+              </mz-select-container>
+            </td>
+            <td>{{ floor.Spent }} W</td>
+          </tr>
+          <tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #no_basement>
+      <div id="basement-info" class="valign-wrapper">
+        <p translate>No data presented for the basement</p>
+      </div>
+    </ng-template>
+  </div>
+  <div class="col l8 s12">
+    <div class="col l12 s12">
+      <ul class="collection with-header">
+        <li class="collection-header">
+          <h5 translate>Devices list spending by unit</h5>
+        </li>
+        <li class="collection-item">
+          <div translate>Air Conditioner<a class="secondary-content black-text">3.8 kW</a></div>
+        </li>
+        <li class="collection-item">
+          <div translate>Coffee Machine<a class="secondary-content black-text">0.65 kW</a></div>
+        </li>
+        <li class="collection-item">
+          <div translate>Computer<a class="secondary-content black-text">0.6 kW</a></div>
+        </li>
+        <li class="collection-item">
+          <div translate>Electro engine<a class="secondary-content black-text">5 kW</a></div>
+        </li>
+        <li class="collection-item">
+          <div translate>Fridge<a class="secondary-content black-text">0.15 kW</a></div>
+        </li>
+        <li class="collection-item">
+          <div translate>Laptop<a class="secondary-content black-text">0.1 kW</a></div>
+        </li>
+        <li class="collection-item">
+          <div translate>Light<a class="secondary-content black-text">0.06 kW</a></div>
+        </li>
+        <li class="collection-item">
+          <div translate>Modem<a class="secondary-content black-text">0.007 kW</a></div>
+        </li>
+        <li class="collection-item">
+          <div translate>Printer<a class="secondary-content black-text">0.1 kW</a></div>
+        </li>
+        <li class="collection-item">
+          <div translate>Router<a class="secondary-content black-text">0.007 kW</a></div>
+        </li>
+        <li class="collection-item">
+          <div translate>TV<a class="secondary-content black-text">0.25 kW</a></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

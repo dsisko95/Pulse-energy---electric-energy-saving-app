@@ -1,0 +1,295 @@
+<mz-sidenav [backgroundClass]="'grey lighten-5 z-depth-4'" [width]="'275'" [fixed]="'true'" [id]="'sidenav-dashboard'"
+  [collapseButtonId]="'btn-sidenav-dashboard'">
+  <mz-sidenav-header>
+    <div class="header-wrapper">
+      <img src="../../../assets/logo.png" alt="logo" height="40" width="60">
+      <h6 class="center grey-text text-darken-1 header-text">Paintlab</h6>
+    </div>
+  </mz-sidenav-header>
+  <mz-sidenav-subheader>
+    <p class="grey-text text-darken-1 subheader-text">Belgrade</p>
+  </mz-sidenav-subheader>
+  <mz-sidenav-divider></mz-sidenav-divider>
+  <mz-sidenav-link>
+    <a class="info-text">Categories</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a class="waves-effect sidenav-thin-font">
+      <i class="material-icons grey-text text-darken-1 left">dashboard</i> {{ 'Overview' | translate }}</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a class="waves-effect sidenav-thin-font">
+      <i class="material-icons grey-text text-darken-1 left">date_range</i>{{ 'Range Statistics' |
+      translate }}</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a class="waves-effect sidenav-thin-font">
+      <i class="material-icons grey-text text-darken-1 left">multiline_chart</i>{{ 'Savings' | translate }}</a>
+  </mz-sidenav-link>
+  <mz-sidenav-divider></mz-sidenav-divider>
+  <mz-sidenav-link>
+    <a class="info-text" translate>Version</a>
+  </mz-sidenav-link>
+  <mz-sidenav-link>
+    <a class="text-grey text-lighten-2 version-text">v 1.0 - demo</a>
+  </mz-sidenav-link>
+</mz-sidenav>
+<div class="z-depth-1 top-navbar">
+  <a class="waves-effect btn transparent btn-large z-depth-0 black-text left" id="btn-sidenav-dashboard">
+    <i class="material-icons left">menu</i>
+  </a>
+  <a class="waves-effect btn transparent btn-large z-depth-0 right logout">
+    <i class="material-icons left grey-text text-darken-3">exit_to_app</i>LOGOUT
+  </a>
+</div>
+<div class="clearfix" id="dashboard-wrapper">
+  <div id="main-wrapper">
+    <div class="row" id="no-margin-bottom">
+      <div class="col l6 s12 m4">
+        <nav class="transparent z-depth-0">
+          <div class="nav-wrapper">
+            <div class="col s12 l12 left">
+              <a class="breadcrumb black-text">Dashboard</a>
+              <a class="breadcrumb black-text">Overview</a>
+            </div>
+          </div>
+        </nav>
+        <p id="overview" class="left">Overview for the Sep 9, 2018</p>
+      </div>
+      <div class="col l6 s12 m8 right">
+        <button type="submit" id="date-btn" class="waves-effect waves-light btn blue z-depth-2 button-date-float right">Send</button>
+        <mz-datepicker-container class="date-float">
+          <input mz-datepicker label="Select date" [options]="options" [(ngModel)]="dateOfDay" id="datepicker"
+            placeholder="Select date" type="text">
+        </mz-datepicker-container>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col l3 s12 m6">
+        <div class="card z-depth-2">
+          <div class="card-content">
+            <span class="card-title">Today's usage</span>
+            <h5>868 kW/h</h5>
+            <h6 class="mt-25">25% less than on Sep 2. 2018</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col l3 s12 m6">
+        <div class="card z-depth-2">
+          <div class="card-content">
+            <span class="card-title">High tariff usage</span>
+            <h5>800 kW/h</h5>
+            <h6>Low tarrif usage 68 kW/h</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col l3 s12  m6">
+        <div class="card z-depth-2">
+          <div class="card-content">
+            <span class="card-title">Total spending</span>
+            <h5>1568 rsd</h5>
+            <h6 class="mt-25">42% low tariff charge</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col l3 s12  m6">
+        <div class="card z-depth-2">
+          <div class="card-content">
+            <span class="card-title">High Tariff</span>
+            <h5>898 rsd</h5>
+            <h6 class="mt-25">Low tariff charge 670 rsd</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l4 s12 m6">
+        <div class="card z-depth-2">
+          <div class="card-content">
+            <span class="card-title">Average value per kW/h</span>
+            <h5>1.80 rsd</h5>
+            <h6 class="mt-25">* including up to 1% margin error</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col l4 s12 m6">
+        <div class="card z-depth-2">
+          <div class="card-content">
+            <span class="card-title">Average usage per hour</span>
+            <h5>36.16 kW/h</h5>
+            <h6 class="mt-25">22 kg CO<sub>2</sub> emission per hour</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col l4 s12  m6">
+        <div class="card z-depth-2">
+          <div class="card-content">
+            <span class="card-title">CO
+              <sub>2</sub></span>
+            <h5> 520kg</h5>
+            <h6 class="mt-25">CO<sub>2</sub> generated by thermal power plant</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h6 class="section-heading">Total spending by hour</h6>
+    <a class="btn-flat saveButton">Save</a>
+    <div class="row">
+      <div>
+        <img src="../../../assets/Graph.PNG" alt="graph" class="responsive-img">
+      </div>
+    </div>
+    <h6 class="section-heading">Usage by departments</h6>
+    <a class="btn-flat saveButton">Save</a>
+    <div class="row">
+      <div class="col l4 m6 s12">
+        <div>
+          <img src="../../../assets/pieChart.PNG" alt="pie" class="responsive-img">
+        </div>
+      </div>
+      <div class="col l4 s12 m6">
+        <div class="card z-depth-2 mt-80">
+          <div class="card-content">
+            <span class="card-title">Percentage usage</span>
+            <h5>22.95% 1st Floor usage</h5>
+            <h6 class="mt-25">38.15% Office usage</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col l4 s12 m6">
+        <div class="card z-depth-2 mt-80">
+          <div class="card-content">
+            <span class="card-title">2nd Floor usage</span>
+            <h5>38.90%</h5>
+            <h6>No data presented for the basement</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h6 class="section-heading">Max device spending by hour</h6>
+    <a class="btn-flat saveButton">Save</a>
+    <div class="row">
+      <div class="col l12 s12">
+        <div>
+          <img src="../../../assets//barChart.PNG" alt="barChart" class="responsive-img">
+        </div>
+      </div>
+      <div class="col l4  m6 s12" id="max-device">
+        <ul class="collection with-header">
+          <li class="collection-header">
+            <h6>Max Device spending by hour before noon</h6>
+          </li>
+          <li class="collection-item">
+            <div>1:00 AM<a class="secondary-content black-text">Air Conditioners - 7.6 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>2:00 AM<a class="secondary-content black-text">Air Conditioners - 3.8 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>3:00 AM<a class="secondary-content black-text">Air Conditioners - 76 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>4:00 AM<a class="secondary-content black-text">Coffee Machines - 1.95 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>5:00 AM<a class="secondary-content black-text">Laptops - 0.5 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>6:00 AM<a class="secondary-content black-text">Air Conditioners - 11.4 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>7:00 AM<a class="secondary-content black-text">Coffee Machines - 2.95 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>8:00 AM<a class="secondary-content black-text">Coffee Machines - 5.95 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>9:00 AM<a class="secondary-content black-text">Coffee Machines - 3.95 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>10:00 AM<a class="secondary-content black-text">Coffee Machines - 1.95 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>11:00 AM<a class="secondary-content black-text">Coffee Machines - 6.95 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>12:00 AM<a class="secondary-content black-text">Coffee Machines - 4.95 kW/h</a></div>
+          </li>
+        </ul>
+      </div>
+      <div class="col l4 m6 s12" id="min-device">
+        <ul class="collection with-header">
+          <li class="collection-header">
+            <h6>Max Device spending by hour afternoon</h6>
+          </li>
+          <li class="collection-item">
+            <div>13:00 AM<a class="secondary-content black-text">Air Conditioners - 7.6 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>14:00 AM<a class="secondary-content black-text">Air Conditioners - 3.8 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>15:00 AM<a class="secondary-content black-text">Air Conditioners - 7.6 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>16:00 AM<a class="secondary-content black-text">Coffee Machines - 1.95 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>17:00 AM<a class="secondary-content black-text">Laptops - 6.5 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>18:00 AM<a class="secondary-content black-text">Air Conditioners - 11.4 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>19:00 AM<a class="secondary-content black-text">Coffee Machines - 2.95 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>20:00 AM<a class="secondary-content black-text">Coffee Machines - 5.95 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>21:00 AM<a class="secondary-content black-text">Coffee Machines - 3.95 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>22:00 AM<a class="secondary-content black-text">Coffee Machines - 1.95 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>23:00 AM<a class="secondary-content black-text">Coffee Machines - 6.95 kW/h</a></div>
+          </li>
+          <li class="collection-item">
+            <div>0:00 AM<a class="secondary-content black-text">Coffee Machines - 4.95 kW/h</a></div>
+          </li>
+        </ul>
+      </div>
+      <div class="col l4 s12 m6">
+        <div class="card z-depth-2" id="max-device-card">
+          <div class="card-content">
+            <span class="card-title">Max spent by</span>
+            <h5>Air Conditioners 76 kW/h</h5>
+            <h6 class="mt-25">Minimum spent by Laptops 0.5 kW/h</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button id="setting-button" mz-button [float]="true" [large]="true" class="grey darken-2" (click)="featureDiscovery.open()">
+  <i class="material-icons">settings</i>
+</button>
+<mz-feature-discovery [targetId]="'setting-button'" #featureDiscovery>
+  <div id="feature-discovery">
+    <h5>Language</h5>
+    <mz-switch-container class="white-text">
+      <input mz-switch id="switch-id" [off]="'English'" [on]="'Српски'" type="checkbox">
+    </mz-switch-container>
+    <h5>Currency</h5>
+    <mz-radio-button-container>
+      <input mz-radio-button [label]="'рсд'" [withGap]="true" id="rsd" name="radio-group" type="radio">
+    </mz-radio-button-container>
+    <mz-radio-button-container>
+      <input mz-radio-button [label]="'euro'" [withGap]="true" id="euro" name="radio-group" type="radio">
+    </mz-radio-button-container>
+    <mz-radio-button-container>
+      <input mz-radio-button [label]="'us dollar'" [withGap]="true" id="us dollar" name="radio-group" type="radio">
+    </mz-radio-button-container>
+  </div>
+</mz-feature-discovery>

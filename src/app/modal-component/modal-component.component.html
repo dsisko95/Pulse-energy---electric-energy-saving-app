@@ -1,0 +1,11 @@
+<mz-modal [bottomSheet]="false">
+  <mz-modal-header>
+    <h5 translate>New data source detected</h5>
+  </mz-modal-header>
+  <mz-modal-content [innerHTML]="'modalText' | translate">
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close (click)="modalShow()" translate>Don't show this anymore</button>
+    <button mz-button [flat]="true" mz-modal-close translate>OK</button>
+  </mz-modal-footer>
+</mz-modal>

@@ -1,0 +1,136 @@
+.date-float {
+  position: relative;
+  top: 20px;
+  width: 170px;
+  float: right;
+}
+
+#no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.button-date-float {
+  position: relative;
+  top: 45px;
+  left: 15px;
+}
+
+.mt-25 {
+  margin-top: 25px;
+}
+
+.mt-80 {
+  margin-top: 80px;
+}
+
+.card {
+  height: 170px;
+  position: relative;
+
+  .card-title {
+    display: inline-block;
+    height: 30px;
+  }
+
+  h6 {
+    position: absolute;
+    bottom: 15px;
+  }
+}
+
+#overview {
+  position: relative;
+  top: -25px;
+  left: 12px;
+}
+
+.section-heading {
+  position: relative;
+  left: 16px;
+  font-size: 20px;
+  margin-bottom: 2rem;
+}
+
+.saveButton {
+  position: relative;
+  text-transform: capitalize;
+  top: -25px;
+  left: -14px;
+}
+
+:host ::ng-deep .picker__date-display,
+:host ::ng-deep .picker__day--selected,
+:host ::ng-deep .picker__day--selected:hover,
+:host ::ng-deep .picker--focused .picker__day--selected {
+  background-color: #2196f3 !important;
+}
+
+:host ::ng-deep .picker__nav--next:hover,
+:host ::ng-deep .picker__nav--prev:hover,
+:host ::ng-deep button.picker__today:focus,
+:host ::ng-deep button.picker__clear:focus,
+:host ::ng-deep button.picker__close:focus {
+  background-color: transparent;
+}
+
+:host ::ng-deep .picker__today {
+  color: black;
+}
+
+:host ::ng-deep .picker__clear {
+  color: red;
+}
+
+:host ::ng-deep .picker__close {
+  color: #2196f3;
+}
+
+:host ::ng-deep .black-overlay {
+  position: fixed !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .date-float {
+    top: 0px;
+    float: left;
+  }
+
+  .button-date-float {
+    top: 20px;
+  }
+
+  .collection.with-header .collection-item {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1250px) {
+  .card {
+    height: 230px;
+
+    .card-action {
+      position: absolute;
+      bottom: 5px;
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1366px) {
+
+  #max-device,
+  #min-device {
+    width: 50%;
+  }
+
+  #max-device-card {
+    height: 230px;
+  }
+
+}
+
+@media only screen and (min-width: 1366px) {
+  #max-device-card {
+    height: 200px;
+  }
+}

@@ -1,0 +1,304 @@
+<div class="container-fluid">
+  <section class="row z-depth-1" id="main-container">
+    <div class="col l12" id="landing-wrapper" parallax [config]="{initialValue: -190, ratio: .5}">
+      <nav class="transparent z-depth-0">
+        <div class="nav-wrapper">
+          <a class="brand-logo" [ngx-scroll-to]="'#main-container'">
+            <img src="../../assets/logo.png" alt="logo" class="responsive-img">
+          </a>
+          <a data-activates="mobile-menu" class="button-collapse" id="btn-sidenav">
+            <i class="material-icons black-text">menu</i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <a [ngx-scroll-to]="'#main-container'" translate>Home</a>
+            </li>
+            <li>
+              <a [ngx-scroll-to]="'#our-app-section'" translate>Our app</a>
+            </li>
+            <li>
+              <a [ngx-scroll-to]="'#request-section-wrapper'" translate>Send a request</a>
+            </li>
+            <li>
+              <a [ngx-scroll-to]="'#about-section-wrapper'" translate>About Us</a>
+            </li>
+            <li>
+              <a routerLink="/login" translate>Log In</a>
+            </li>
+            <li>
+              <mz-dropdown [id]="'dropdown'" [align]="'left'" [belowOrigin]="true" [constrainWidth]="true" [dropdownButtonId]="'btn-dropdown'"
+                [gutter]="true" [inDuration]="300" [outDuration]="300" [stopPropagation]="true">
+                <mz-dropdown-item>
+                  <a (click)="switchLanguage('en')" class="black-text">English</a>
+                </mz-dropdown-item>
+                <mz-dropdown-divider></mz-dropdown-divider>
+                <mz-dropdown-item>
+                  <a (click)="switchLanguage('srb')" class="black-text">Српски</a>
+                </mz-dropdown-item>
+              </mz-dropdown>
+              <i class="material-icons grey-text text-darken-1 transparent waves-effect waves-light btn z-depth-0" id="btn-dropdown">language</i>
+            </li>
+          </ul>
+          <mz-sidenav [id]="'sidenav-demo'" [collapseButtonId]="'btn-sidenav'" [backgroundClass]="'white'" [width]="'260'">
+            <mz-sidenav-link>
+              <a [ngx-scroll-to]="'#main-container'" class="waves-effect sidenav-thin-font">{{ 'Home Side' | translate }}</a>
+            </mz-sidenav-link>
+            <mz-sidenav-link>
+              <a [ngx-scroll-to]="'#our-app-section'" class="waves-effect sidenav-thin-font">{{ 'Our app Side' | translate }}</a>
+            </mz-sidenav-link>
+            <mz-sidenav-link>
+              <a [ngx-scroll-to]="'#request-section-wrapper'" class="waves-effect sidenav-thin-font">{{ 'Send a request Side' | translate }} </a>
+            </mz-sidenav-link>
+            <mz-sidenav-link>
+              <a [ngx-scroll-to]="'#about-section-wrapper'" class="waves-effect sidenav-thin-font">{{ 'About Us Side' | translate }}</a>
+            </mz-sidenav-link>
+            <mz-sidenav-link>
+              <a routerLink="/login" class="waves-effect sidenav-thin-font">{{ 'Log In Side' | translate }}</a>
+            </mz-sidenav-link>
+            <mz-sidenav-link>
+              <mz-dropdown [id]="'dropdown-sidemenu'" [align]="'left'" [belowOrigin]="true" [constrainWidth]="true" [dropdownButtonId]="'btn-dropdown-sidemenu'"
+                [gutter]="true" [inDuration]="300" [outDuration]="300" [stopPropagation]="true">
+                <mz-dropdown-item>
+                  <a (click)="switchLanguage('en')" class="black-text">English</a>
+                </mz-dropdown-item>
+                <mz-dropdown-item>
+                  <a (click)="switchLanguage('srb')" class="black-text">Српски</a>
+                </mz-dropdown-item>
+              </mz-dropdown>
+              <i class="material-icons grey-text text-darken-1 transparent waves-effect waves-light btn z-depth-0 left" id="btn-dropdown-sidemenu">language</i>
+            </mz-sidenav-link>
+          </mz-sidenav>
+        </div>
+      </nav>
+      <div class="row">
+        <div class="col l12">
+          <div class="landing-container">
+            <div class="txt-container">
+              <h4 class="animated infinite pulse slow">Pulse Energy</h4>
+              <p class="flow-text">{{ 'PEM' | translate }}</p>
+              <div class="paragraph-container animated zoomIn">
+                <p class="flow-text" [innerHTML]="'PEMТ' | translate"></p>
+              </div>
+            </div>
+            <div class="img-container">
+              <img src="../../assets/Router.png" alt="router" class="responsive-img">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="center-align" id="btn-wrapper">
+          <a [ngx-scroll-to]="'#our-app-section'" class="waves-effect waves-light btn blue btn-large z-depth-2">
+            <i class="material-icons right">keyboard_arrow_down</i>{{ 'GS' | translate }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="container">
+  <section id="our-app-section">
+    <div class="row">
+      <h4 translate>Our app</h4>
+      <h5 translate>Introduction</h5>
+      <br>
+      <div class="col l5 s12 left-text">
+        <p [innerHTML]="'I1' | translate"></p>
+      </div>
+      <div class="col l7 s12 logo-section">
+        <img src="../../assets/logo.png" alt="logo" height="70" width="100">
+        <h5>Pulse Energy</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l7 s12 center-align">
+        <div class="img-container-problem-meter">
+          <picture>
+            <source media="(max-width: {{ res }})" srcset="../../assets/problemResponsive.png">
+            <img src="../../assets/problem.png" alt="problem" width="250" height="250" class="responsive-img">
+          </picture>
+          <div class="problemMeterShown">
+            <img src="../../assets/problemMeter.png" alt="meterProblem" width="250" height="250" class="responsive-img">
+          </div>
+        </div>
+      </div>
+      <div class="col l5 s12 right-text">
+        <h5 translate>The problem</h5>
+        <p [innerHTML]="'P1' | translate"></p>
+      </div>
+    </div>
+    <div class="row">
+      <h5 translate>The solution</h5>
+      <div class="col l4 s12 left-text">
+        <p [innerHTML]="'S1' | translate"></p>
+      </div>
+      <div class="col l8 s12  center-align logo-section">
+        <img src="../../assets/solution.PNG" alt="solution" class="responsive-img" id="graph-photo">
+      </div>
+    </div>
+    <div class="row" id="live-version-section">
+      <div class="center-align">
+        <p>{{ 'Making' | translate }}</p>
+        <p class="small-fonts-lvs">{{ 'Live' | translate }}</p>
+        <a class="waves-effect waves-light btn blue btn-large z-depth-2 center-align lv-button animated infinite tada slow" href="/demo" target="_blank">
+          {{ "Live version" | translate}}</a>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="container-fluid blue white-text" id="request-section-wrapper">
+  <section class="request-section">
+    <div class="row">
+      <h4 class="right-align" translate>Send a request</h4>
+      <h5 class="right-align" [innerHTML]="'Y1' | translate"></h5>
+      <div class="col l6 s12">
+        <div class="col l12 s12 center-align">
+          <form autocomplete="off">
+            <div class="row">
+              <div class="input-field col l6 s12">
+                <input placeholder="{{ 'nameReq' | translate }}" id="name" type="text" required ngModel #name="ngModel" name="name">
+                <label for="name" class="active" translate>Name</label>
+                <span class="helper-text" *ngIf="!name.valid && name.touched">{{ 'N' | translate }}</span>
+              </div>
+              <div class="input-field col l6 s12">
+                <input placeholder="{{ 'emailReq' | translate }}" id="email" type="email" ngModel required email #email="ngModel" name="email">
+                <label for="email" class="active" translate>Email</label>
+                <span class="helper-text" *ngIf="!email.valid && email.touched">{{ 'Em' | translate }}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="textarea" class="materialize-textarea" placeholder="{{ 'txtReq' | translate }}" ngModel #textarea="ngModel"
+                  required name="textarea"></textarea>
+                <label for="textarea" class="active" translate>Message</label>
+                <span class="helper-text" *ngIf="!textarea.valid && textarea.touched">{{ 'M' | translate }}</span>
+              </div>
+            </div>
+            <button type="submit" class="waves-effect waves-light btn blue btn-large z-depth-2 center-align" translate>Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="col l6 s12 center">
+        <div class="container contact-txt">
+          <p [innerHTML]="'WR' | translate"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="container-fluid" id="about-section-wrapper">
+  <section class="about-section">
+    <div class="row">
+      <h4 class="left-align" translate>About Us</h4>
+      <h5 class="left-align" translate>Here's our short timeline</h5>
+      <h5 class="center" translate>Today</h5>
+      <div class="col l12 s12">
+        <div class="timeline white-text">
+          <div class="wrapper lefter">
+            <div class="content card">
+              <div class="card-content">
+                <span class="card-title">2017</span>
+                <p>{{ '2017' | translate }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="wrapper righter">
+            <div class="content card">
+              <div class="card-content">
+                <span class="card-title">2016</span>
+                <p>{{ '2016' | translate }} </p>
+              </div>
+            </div>
+          </div>
+          <div class="wrapper lefter">
+            <div class="content card">
+              <div class="card-content">
+                <span class="card-title">2015</span>
+                <p>{{ '2015' | translate}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="container-fluid">
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m8 l6">
+          <h5 class="black-text" translate>Navigate</h5>
+          <p>
+            <a [ngx-scroll-to]="'#main-container'" class="black-text" translate>Home</a>
+          </p>
+          <p>
+            <a [ngx-scroll-to]="'#our-app-section'" class="black-text" translate>Our app</a>
+          </p>
+          <p>
+            <a [ngx-scroll-to]="'#request-section-wrapper'" class="black-text" translate>Send a request</a>
+          </p>
+          <p>
+            <a [ngx-scroll-to]="'#about-section-wrapper'" class="black-text" translate>About Us</a>
+          </p>
+          <p>
+            <a routerLink="/login" class="black-text" translate>Log In</a>
+          </p>
+          <h5 class="black-text" translate>Language</h5>
+          <p>
+            <mz-dropdown [id]="'dropdown-footer'" [align]="'left'" [belowOrigin]="true" [constrainWidth]="true" [dropdownButtonId]="'btn-dropdown-footer'"
+              [gutter]="true" [inDuration]="300" [outDuration]="300" [stopPropagation]="true">
+              <mz-dropdown-item>
+                <a (click)="switchLanguage('en')" class="black-text">English</a>
+              </mz-dropdown-item>
+              <mz-dropdown-divider></mz-dropdown-divider>
+              <mz-dropdown-item>
+                <a (click)="switchLanguage('srb')" class="black-text">Српски</a>
+              </mz-dropdown-item>
+            </mz-dropdown>
+            <i class="material-icons grey-text text-darken-1 transparent waves-effect waves-light btn z-depth-0" id="btn-dropdown-footer">language</i>
+          </p>
+        </div>
+        <div class="row">
+          <div class="col s12 m4 l6">
+            <h5 class="black-text" translate>Address</h5>
+            <div class="black-text">
+              <span translate>Badnji do 20</span>
+              <br>
+              <span translate>Čajetina 31310</span>
+              <br>
+              <span translate>Serbia</span>
+              <p>
+                <i class="material-icons left">local_phone</i> 060/337-38-84</p>
+              <p>
+                <i class="material-icons left">access_time</i> 24/7 </p>
+            </div>
+          </div>
+          <div class="col l6">
+            <h5 class="black-text" translate>Stay connected</h5>
+            <h6 class="black-text">{{ 'Join' | translate}}</h6>
+            <form autocomplete="off" #form="ngForm">
+              <div class="input-field col l6 s12">
+                <input id="email-footer" type="email" class="black-text" required email name="email" ngModel #emailFooter="ngModel">
+                <label for="email-footer" translate>Email</label>
+                <span class="helper-text black-text" data-error="Wrong email" *ngIf="!emailFooter.valid && emailFooter.touched">{{ 'Em' | translate }}</span>
+              </div>
+              <button type="submit" class="waves-effect waves-light btn grey darken-4 z-depth-2 white-text" id="send-email-footer" translate>Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container black-text">
+        <span translate>© 2018 Pulse energy | All rights reserved</span>
+        <p class="right" translate>Privacy</p>
+        <p class="right mr-15"></p>
+        <p class="right" translate>Legal</p>
+        <p class="right mr-15"></p>
+        <p class="right" translate>Security</p>
+      </div>
+    </div>
+  </footer>
+</div>

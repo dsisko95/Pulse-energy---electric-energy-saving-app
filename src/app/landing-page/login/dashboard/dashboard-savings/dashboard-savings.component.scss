@@ -1,0 +1,80 @@
+#no-margin-bottom {
+  margin-bottom: 0;
+}
+
+#overview {
+  position: relative;
+  top: -25px;
+  left: 12px;
+}
+
+.mt-25 {
+  margin-top: 25px;
+}
+
+.card {
+  height: 190px;
+  position: relative;
+
+  .card-title {
+    display: inline-block;
+    height: 30px;
+  }
+
+  h6 {
+    position: absolute;
+    bottom: 15px;
+  }
+}
+
+.section-heading {
+  position: relative;
+  left: 16px;
+  font-size: 20px;
+  margin-bottom: 2rem;
+}
+
+#basement-info {
+  height: 300px;
+
+  p {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+:host ::ng-deep .dropdown-content li>span {
+  color: #2196f3;
+}
+
+:host ::ng-deep .black-overlay {
+  position: fixed !important;
+}
+
+:host ::ng-deep input[type=text]:not(.browser-default):focus {
+  border-bottom: 1px solid #2196f3;
+  box-shadow: 0 1px 0 0 #2196f3;
+}
+
+:host ::ng-deep input[type=text]:not(.browser-default):focus:not([readonly])+label {
+  color: #2196f3;
+}
+
+@media only screen and (min-width: 1137px) and (max-width: 1250px) {
+  .card {
+    height: 230px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1136px) {
+  .card {
+    height: 290px;
+  }
+}
+
+@media only screen and (min-width: 1137px) and (max-width: 1333px) {
+  .card {
+    height: 250px;
+  }
+}

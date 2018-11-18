@@ -1,0 +1,60 @@
+<ng-progress [color]="'#2196F3'"></ng-progress>
+<a class="waves-effect btn transparent btn-large z-depth-0 black-text" [routerLink]="''" translate>
+  <i class="material-icons left">arrow_back</i>GO BACK</a>
+<div id="login-container">
+  <div id="login-form-wrapper" class="z-depth-1">
+    <div class="img-wrapper center">
+      <img src="../../assets/logo.png" alt="logo" height="70" width="100">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col l12 s12">
+          <mat-tab-group mat-stretch-tabs>
+            <mat-tab label="{{ 'LGF' | translate }}" *ngIf="loginLabel">
+              <br>
+              <form class="center" autocomplete="on" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+                <div class="input-field col l12 s12 mb-10">
+                  <input placeholder="{{ 'PU' | translate}}" type="text" id="name" formControlName="usernameLogin">
+                  <label for="name" class="active" translate>Username</label>
+                </div>
+                <div class="input-field col l12 s12 mb-10">
+                  <input placeholder="{{ 'PP' | translate}}" type="password" formControlName="passwordLogin" id="password">
+                  <label for="password" class="active" translate>Password</label>
+                </div>
+                <button type="submit" class="waves-effect waves-light btn blue btn-large z-depth-2">{{ 'LLL' | translate}}</button>
+              </form>
+            </mat-tab>
+            <mat-tab label="{{ 'RP' | translate }}" *ngIf="resetLabel">
+              <br>
+              <form class="center" autocomplete="off" [formGroup]="resetForm" (ngSubmit)="onSubmitReset()">
+                <div class="input-field col l12 s12 mb-10">
+                  <input placeholder="{{ 'PU' | translate}}" type="text" id="username" formControlName="username">
+                  <label for="username" class="active" translate>Username</label>
+                </div>
+                <div class="input-field col l12 s12 mb-10">
+                  <input placeholder="{{ 'SQ' | translate}}" type="password" id="security" formControlName="secQuestion">
+                  <label for="security" class="active" translate>Security Question</label>
+                </div>
+                <button type="submit" class="waves-effect waves-light btn blue btn-large z-depth-2">{{ 'Send' | translate}}</button>
+              </form>
+            </mat-tab>
+            <mat-tab label="{{ 'RPР' | translate }}" *ngIf="passwordLabel">
+              <br>
+              <form class="center" autocomplete="off" [formGroup]="resetFormPassword" (ngSubmit)="onSubmitResetPassword()">
+                <div class="input-field col l12 s12 mb-10">
+                  <input placeholder="{{ 'PPN' | translate}}" type="password" id="newPass" formControlName="newPassword">
+                  <label for="newPass" class="active" translate>New Password</label>
+                </div>
+                <div class="input-field col l12 s12 mb-10">
+                  <input placeholder="{{ 'PPNR' | translate}}" type="password" id="newRPass" formControlName="newPasswordRepeat">
+                  <label for="newRPass" class="active" translate>Repeat New Password</label>
+                </div>
+                <button type="submit" class="waves-effect waves-light btn blue btn-large z-depth-2">{{ 'RE' | translate}}</button>
+              </form>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

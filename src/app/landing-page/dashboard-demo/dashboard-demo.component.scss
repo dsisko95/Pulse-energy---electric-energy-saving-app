@@ -1,0 +1,279 @@
+.sidenav-thin-font {
+  font-weight: 400;
+  color: black;
+  display: block;
+  font-size: 14px;
+  height: 48px;
+  padding: 32px 32px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  line-height: 0;
+
+  i {
+    line-height: 0;
+  }
+}
+
+.logout {
+  font-weight: 500;
+  color: black;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+#dashboard-wrapper,
+#btn-sidenav-dashboard {
+  margin-left: 275px;
+}
+
+#btn-sidenav-dashboard {
+  display: none;
+}
+
+.top-navbar {
+  overflow: hidden;
+}
+
+#main-wrapper {
+  width: 96%;
+  margin: 0 auto;
+}
+
+.subheader-text {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.header-text {
+  text-transform: uppercase;
+  padding-top: 25px;
+  font-weight: 500;
+}
+
+.info-text {
+  font-weight: 400;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.version-text {
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.header-wrapper {
+  display: flex;
+  align-items: center;
+
+  img {
+    position: relative;
+    top: 10px;
+    left: 15px;
+    margin-right: 30px;
+  }
+}
+
+#setting-button {
+  position: fixed;
+  bottom: 40px;
+  right: 35px;
+}
+
+#feature-discovery {
+  position: relative;
+  top: 110px;
+}
+
+.tap-target {
+  background-color: #2196f3 !important;
+  color: white;
+}
+
+:host ::ng-deep [type="radio"]:not(:checked)+label,
+:host ::ng-deep [type="radio"]:checked+label {
+  color: white;
+}
+
+:host ::ng-deep [type="radio"]:checked+label:after,
+:host ::ng-deep [type="radio"].with-gap:checked+label:after {
+  background-color: #fff;
+}
+
+:host ::ng-deep [type="radio"]:checked+label:after,
+:host ::ng-deep [type="radio"].with-gap:checked+label:before,
+:host ::ng-deep [type="radio"].with-gap:checked+label:after {
+  border: 2px solid white;
+}
+
+:host ::ng-deep [type="radio"]:not(:checked)+label:before,
+:host ::ng-deep [type="radio"]:not(:checked)+label:after {
+  border: 2px solid white;
+}
+
+:host ::ng-deep .switch label {
+  color: white;
+}
+
+:host ::ng-deep .switch label input[type=checkbox]:checked+.lever {
+  background-color: rgba(0, 0, 0, 0.38) !important;
+}
+
+:host ::ng-deep .switch label input[type=checkbox]:checked+.lever:after {
+  background-color: white !important;
+}
+
+@media only screen and (max-width: 992px) {
+
+  #dashboard-wrapper,
+  #btn-sidenav-dashboard {
+    margin-left: 0px;
+  }
+
+  #btn-sidenav-dashboard {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #setting-button {
+    opacity: 0.6;
+  }
+
+  #feature-discovery {
+    top: 80px;
+  }
+}
+
+.date-float {
+  position: relative;
+  top: 20px;
+  width: 170px;
+  float: right;
+}
+
+#no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.button-date-float {
+  position: relative;
+  top: 45px;
+  left: 15px;
+}
+
+.mt-25 {
+  margin-top: 25px;
+}
+
+.mt-80 {
+  margin-top: 80px;
+}
+
+.card {
+  height: 170px;
+  position: relative;
+
+  .card-title {
+    display: inline-block;
+    height: 30px;
+  }
+
+  h6 {
+    position: absolute;
+    bottom: 15px;
+  }
+}
+
+#overview {
+  position: relative;
+  top: -25px;
+  left: 12px;
+}
+
+.section-heading {
+  position: relative;
+  left: 16px;
+  font-size: 20px;
+  margin-bottom: 2rem;
+}
+
+.saveButton {
+  position: relative;
+  text-transform: capitalize;
+  top: -25px;
+  left: -14px;
+}
+
+:host ::ng-deep .picker__date-display,
+:host ::ng-deep .picker__day--selected,
+:host ::ng-deep .picker__day--selected:hover,
+:host ::ng-deep .picker--focused .picker__day--selected {
+  background-color: #2196f3 !important;
+}
+
+:host ::ng-deep .picker__nav--next:hover,
+:host ::ng-deep .picker__nav--prev:hover,
+:host ::ng-deep button.picker__today:focus,
+:host ::ng-deep button.picker__clear:focus,
+:host ::ng-deep button.picker__close:focus {
+  background-color: transparent;
+}
+
+:host ::ng-deep .picker__today {
+  color: black;
+}
+
+:host ::ng-deep .picker__clear {
+  color: red;
+}
+
+:host ::ng-deep .picker__close {
+  color: #2196f3;
+}
+
+@media only screen and (max-width: 600px) {
+  .date-float {
+    top: 0px;
+    float: left;
+  }
+
+  .button-date-float {
+    top: 20px;
+  }
+
+  .collection.with-header .collection-item {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1250px) {
+  .card {
+    height: 230px;
+
+    .card-action {
+      position: absolute;
+      bottom: 5px;
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1366px) {
+
+  #max-device,
+  #min-device {
+    width: 50%;
+  }
+
+  #max-device-card {
+    height: 230px;
+  }
+
+}
+
+@media only screen and (min-width: 1366px) {
+  #max-device-card {
+    height: 200px;
+  }
+}
